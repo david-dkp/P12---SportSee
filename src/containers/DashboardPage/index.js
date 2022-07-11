@@ -1,7 +1,7 @@
 import userService from "apis/UserService"
 
 const DashboardPage = () => {
-    userService.getUserPerformance("12").then((user) => {
+    userService.getUserAverageSessions("12").then((user) => {
         console.log(user)
     })
 

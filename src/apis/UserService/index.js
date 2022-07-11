@@ -25,11 +25,27 @@ const getUser = async (id) => {
 
 const getUserActivity = async (id) => {
     const response = await fetch(userActivity(id))
+
+    if (response.status === 200) {
+        const parsedData = await response.json()
+        return parsedData.data.sessions.map((session) =>
+            mapSessionDtoToSession(session)
+        )
+    }
+
     return await response.json()
 }
 
 const getUserAverageSessions = async (id) => {
     const response = await fetch(userAverageSessions(id))
+
+    if (response.status === 200) {
+        const parsedData = await response.json()
+        return parsedData.data.sessions.map((session) => {
+            return mapAvergageSessionDtoToAverageSession(session)
+        })
+    }
+
     return await response.json()
 }
 
