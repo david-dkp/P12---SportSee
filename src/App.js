@@ -1,8 +1,12 @@
-import logo from "./logo.svg"
 import "./App.css"
+import DashboardPage from "containers/DashboardPage"
 
 function App() {
-    return <div className="App"></div>
+    return (
+        <div className="App">
+            <DashboardPage />
+        </div>
+    )
 }
 
 export default App
