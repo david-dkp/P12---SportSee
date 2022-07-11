@@ -1,15 +1,13 @@
 import userService from "apis/UserService"
+import PerformanceChart from "components/PerformanceChart"
+import { useState } from "react"
 
 const DashboardPage = () => {
-    userService.getUserAverageSessions("12").then((user) => {
-        console.log(user)
-    })
+    const [performances, setPerformances] = useState([])
+    console.log(performances)
+    userService.getUserPerformance("12").then(setPerformances)
 
-    return (
-        <div>
-            <h1>DashboardPage</h1>
-        </div>
-    )
+    return <PerformanceChart performances={performances} />
 }
 
 export default DashboardPage
