@@ -12,7 +12,7 @@
     right: 0;
     height: 100%;
     background-color: #282d30;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 
 .tooltip {
@@ -26,4 +26,12 @@
     background-color: blue;
     width: 1rem;
     height: 1rem;
+}
+
+.title {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.3em;
 }

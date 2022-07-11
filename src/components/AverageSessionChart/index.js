@@ -35,6 +35,7 @@ const AverageSessionChart = ({ averageSessions }) => {
                 className={styles["chart-overlay"]}
                 style={{ left: chartOverlayLeft }}
             />
+            <p className={styles.title}>Durée moyenne des sessions</p>
             <LineChart
                 width={300}
                 height={300}
