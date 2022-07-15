@@ -1,0 +1,48 @@
+.container {
+    padding: 2em;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    display: flex;
+    gap: 1.3em;
+}
+
+.icon-container {
+    position: relative;
+    width: 4em;
+    height: 4em;
+    padding: 1.3em;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.icon-container > * {
+    width: 100%;
+    height: 100%;
+}
+
+.icon-container-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2em;
+}
+
+.data-value {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.data-title {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #74798c;
+}
