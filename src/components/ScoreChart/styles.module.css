@@ -1,0 +1,37 @@
+.chart {
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    width: min-content;
+    position: relative;
+}
+
+.label-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+}
+
+.label-percent-text {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.label-percent-sub-text {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #74798c;
+    line-height: 1.5em;
+}

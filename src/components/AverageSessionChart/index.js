@@ -37,8 +37,8 @@ const AverageSessionChart = ({ averageSessions }) => {
             />
             <p className={styles.title}>Durée moyenne des sessions</p>
             <LineChart
-                width={300}
-                height={300}
+                width={330}
+                height={330}
                 data={data}
                 margin={{
                     top: 100,
@@ -52,6 +52,7 @@ const AverageSessionChart = ({ averageSessions }) => {
                     dataKey="label"
                     axisLine={false}
                     tickLine={false}
+                    tickMargin={10}
                 />
                 <Tooltip cursor={false} content={renderTooltip} />
                 <Line

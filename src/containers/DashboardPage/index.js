@@ -7,18 +7,31 @@ const DashboardPage = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [performances, setPerformances] = useState([])
     const [averageSessions, setAverageSessions] = useState([])
+    const [userActivity, setUserActivity] = useState(null)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         const getPerformancePromise = userService.getUserPerformance(userId)
         const getAverageSessionPromise =
             userService.getUserAverageSessions(userId)
+        const getUserActivityPromise = userService.getUserActivity(userId)
+        const getUserPromise = userService.getUser(userId)
 
-        Promise.all([getPerformancePromise, getAverageSessionPromise])
-            .then(([performanceData, averageSessionData]) => {
-                setPerformances(performanceData)
-                setAverageSessions(averageSessionData)
-                setIsLoading(false)
-            })
+        Promise.all([
+            getPerformancePromise,
+            getAverageSessionPromise,
+            getUserActivityPromise,
+            getUserPromise,
+        ])
+            .then(
+                ([performanceData, averageSessionData, userActivity, user]) => {
+                    setPerformances(performanceData)
+                    setAverageSessions(averageSessionData)
+                    setUserActivity(userActivity)
+                    setUser(user)
+                    setIsLoading(false)
+                }
+            )
             .catch((error) => {
                 console.log(error)
             })
@@ -28,6 +41,8 @@ const DashboardPage = () => {
         <DashboardPageComponent
             averageSessions={averageSessions}
             performances={performances}
+            userActivity={userActivity}
+            user={user}
             isLoading={isLoading}
         />
     )
