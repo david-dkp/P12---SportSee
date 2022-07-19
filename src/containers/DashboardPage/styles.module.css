@@ -1,0 +1,33 @@
+@import url("../../index.css");
+
+.container {
+    padding: 2rem;
+}
+
+.header-title {
+    font-size: 2em;
+}
+
+.user-name {
+    color: var(--color-primary);
+}
+
+.header-description {
+    font-size: 1.1em;
+    margin-top: 0.6rem;
+}
+
+.dashboard-container {
+    display: flex;
+}
+
+.dashboard-charts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dashboard-sub-charts-container {
+    display: flex;
+    gap: 2rem;
+}

@@ -19,7 +19,7 @@ const KeyDataItem = ({ icon, color, title, value }) => (
 )
 
 KeyDataItem.propTypes = {
-    icon: PropTypes.element,
+    icon: PropTypes.func,
     color: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,

@@ -7,6 +7,56 @@ import ScoreChart from "components/ScoreChart"
 import User from "domain/User"
 import KeyDataItem from "components/KeyDataItem"
 import FireIcon from "components/Icons/FireIcon"
+import styles from "../styles.module.css"
+import { useMemo } from "react"
+import ChickenIcon from "components/Icons/ChickenIcon"
+import AppleIcon from "components/Icons/AppleIcon"
+import CheeseBurgerIcon from "components/Icons/CheeseBurgerIcon"
+import { addComas } from "utils/numberUtils"
+
+const getKeyDataProp = (key, value) => {
+    switch (key) {
+        case "calorieCount": {
+            return {
+                key: "Calories",
+                color: "#FF0000",
+                title: "Calories",
+                value: addComas(value) + "kCal",
+                icon: FireIcon,
+            }
+        }
+        case "carbohydrateCount": {
+            return {
+                key: "Carbohydrates",
+                color: "#FDCC0C",
+                title: "Glucides",
+                value: value + "g",
+                icon: AppleIcon,
+            }
+        }
+        case "lipidCount": {
+            return {
+                key: "Lipids",
+                color: "#FD5181",
+                title: "Lipides",
+                value: value + "g",
+                icon: CheeseBurgerIcon,
+            }
+        }
+        case "proteinCount": {
+            return {
+                key: "Proteins",
+                color: "#4AB8FF",
+                title: "Proteines",
+                value: value + "g",
+                icon: ChickenIcon,
+            }
+        }
+        default: {
+            return null
+        }
+    }
+}
 
 const DashboardPage = ({
     performances,
@@ -15,22 +65,51 @@ const DashboardPage = ({
     user,
     isLoading,
 }) => {
-    console.log(user)
+    const keyDatas = useMemo(
+        () =>
+            Object.entries(user.keyData).map(([key, value]) => {
+                return getKeyDataProp(key, value)
+            }),
+        [user]
+    )
     return (
-        <div>
+        <div className={styles.container}>
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
                 <>
-                    <PerformanceChart performances={performances} />
-                    <AverageSessionChart averageSessions={averageSessions} />
-                    <ScoreChart scorePercent={user.todayScore} />
-                    <KeyDataItem
-                        color={"#FF0000"}
-                        title={"Calories"}
-                        value={"1,930kCal"}
-                        icon={FireIcon}
-                    />
+                    <h2 className={styles["header-title"]}>
+                        Bonjour{" "}
+                        <span className={styles["user-name"]}>
+                            {user.firstName}
+                        </span>
+                    </h2>
+                    <p className={styles["header-description"]}>
+                        Félicitation ! Vous avez explosé vos objectifs hier
+                    </p>
+                    <div className={styles["dashboard-container"]}>
+                        <div className={styles["dashboard-charts-container"]}>
+                            <div
+                                className={styles["dashboard-activity-chart"]}
+                            />
+                            <div
+                                className={
+                                    styles["dashboard-sub-charts-container"]
+                                }
+                            >
+                                <AverageSessionChart
+                                    averageSessions={averageSessions}
+                                />
+                                <PerformanceChart performances={performances} />
+                                <ScoreChart scorePercent={user.todayScore} />
+                            </div>
+                        </div>
+                        <div className={styles["dashboard-key-data-items"]}>
+                            {keyDatas.map((keyData) => (
+                                <KeyDataItem {...keyData} />
+                            ))}
+                        </div>
+                    </div>
                 </>
             )}
         </div>
