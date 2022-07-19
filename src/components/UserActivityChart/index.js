@@ -16,9 +16,18 @@ import styles from "./styles.module.css"
 
 const UserActivityChart = ({ sessions }) => {
     const data = useMemo(() => {
+        const maxCalories = Math.max(
+            ...sessions.map((session) => session.calories)
+        )
+        const maxWeight = Math.max(
+            ...sessions.map((session) => session.kilogram)
+        )
+
         return sessions.map((session, i) => {
+            const mappedCalories = (session.calories / maxCalories) * maxWeight
             return {
                 weight: session.kilogram,
+                mappedCalories: mappedCalories,
                 calories: session.calories,
                 label: i + 1,
             }
@@ -31,7 +40,7 @@ const UserActivityChart = ({ sessions }) => {
         }
 
         const weight = props.payload[0].value
-        const calories = props.payload[1].value
+        const calories = props.payload[1].payload.calories
 
         return (
             <div className={styles["tooltip"]}>
@@ -42,7 +51,7 @@ const UserActivityChart = ({ sessions }) => {
     }, [])
 
     return (
-        <ResponsiveContainer>
+        <ResponsiveContainer height={500}>
             <BarChart
                 margin={{
                     top: 20,
@@ -53,16 +62,33 @@ const UserActivityChart = ({ sessions }) => {
                 className={styles["chart"]}
                 data={data}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="label" />
-                <YAxis />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis tickLine={false} tickMargin={10} dataKey="label" />
+                <YAxis
+                    tickLine={false}
+                    axisLine={false}
+                    padding={{
+                        top: 70,
+                    }}
+                    tickMargin={10}
+                    orientation="right"
+                    domain={[0, "dataMax+10"]}
+                />
                 <Tooltip content={renderTooltip} />
-                <Legend verticalAlign="top" align="right" />
-                <Bar name="Poids (kg)" dataKey="weight" fill="#282D30" />
+                <Legend iconType="circle" verticalAlign="top" align="right" />
+                <Bar
+                    name="Poids (kg)"
+                    dataKey="weight"
+                    fill="#282D30"
+                    radius={[10, 10, 0, 0]}
+                    maxBarSize={13}
+                />
                 <Bar
                     name="Calories brûlées (kCal)"
-                    dataKey="calories"
+                    dataKey="mappedCalories"
                     fill="#E60000"
+                    radius={[10, 10, 0, 0]}
+                    maxBarSize={13}
                 />
             </BarChart>
         </ResponsiveContainer>
