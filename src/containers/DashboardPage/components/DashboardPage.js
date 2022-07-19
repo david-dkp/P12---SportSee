@@ -13,6 +13,8 @@ import ChickenIcon from "components/Icons/ChickenIcon"
 import AppleIcon from "components/Icons/AppleIcon"
 import CheeseBurgerIcon from "components/Icons/CheeseBurgerIcon"
 import { addComas } from "utils/numberUtils"
+import Session from "domain/Session"
+import UserActivityChart from "components/UserActivityChart"
 
 const getKeyDataProp = (key, value) => {
     switch (key) {
@@ -67,6 +69,7 @@ const DashboardPage = ({
 }) => {
     const keyDatas = useMemo(
         () =>
+            user &&
             Object.entries(user.keyData).map(([key, value]) => {
                 return getKeyDataProp(key, value)
             }),
@@ -89,9 +92,7 @@ const DashboardPage = ({
                     </p>
                     <div className={styles["dashboard-container"]}>
                         <div className={styles["dashboard-charts-container"]}>
-                            <div
-                                className={styles["dashboard-activity-chart"]}
-                            />
+                            <UserActivityChart sessions={userActivity} />
                             <div
                                 className={
                                     styles["dashboard-sub-charts-container"]
@@ -121,6 +122,7 @@ DashboardPage.propTypes = {
     performances: PropTypes.arrayOf(PropTypes.instanceOf(Performance)),
     averageSessions: PropTypes.arrayOf(PropTypes.instanceOf(AverageSession)),
     user: PropTypes.instanceOf(User),
+    userActivity: PropTypes.arrayOf(PropTypes.instanceOf(Session)),
 }
 
 export default DashboardPage

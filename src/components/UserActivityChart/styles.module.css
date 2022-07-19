@@ -1,0 +1,15 @@
+.chart {
+    background-color: #fbfbfb;
+    border-radius: 5px;
+}
+
+.tooltip {
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 1em;
+    color: white;
+    align-items: center;
+    gap: 2em;
+    font-size: 0.8em;
+}
