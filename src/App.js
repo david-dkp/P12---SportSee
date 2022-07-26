@@ -1,10 +1,13 @@
 import "./App.css"
 import DashboardPage from "containers/DashboardPage"
+import PageLayout from "containers/PageLayout"
 
 function App() {
     return (
         <div className="App">
-            <DashboardPage />
+            <PageLayout>
+                <DashboardPage />
+            </PageLayout>
         </div>
     )
 }
