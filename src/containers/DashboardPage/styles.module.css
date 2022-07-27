@@ -38,6 +38,10 @@
 .dashboard-sub-charts-container {
     display: flex;
     gap: 2rem;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
 }
 
 .dashboard-key-data-items {
