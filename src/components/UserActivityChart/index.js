@@ -51,7 +51,7 @@ const UserActivityChart = ({ sessions }) => {
     }, [])
 
     return (
-        <ResponsiveContainer height={300}>
+        <ResponsiveContainer className={styles["container"]} height={300}>
             <BarChart
                 margin={{
                     top: 20,
@@ -62,7 +62,7 @@ const UserActivityChart = ({ sessions }) => {
                 className={styles["chart"]}
                 data={data}
             >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <CartesianGrid strokeDasharray="4" vertical={false} />
                 <XAxis tickLine={false} tickMargin={10} dataKey="label" />
                 <YAxis
                     tickLine={false}

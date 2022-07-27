@@ -1,6 +1,27 @@
+.container {
+    position: relative;
+}
+
+.container::after {
+    content: "Activité quotidienne";
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: #20253a;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
 .chart {
     background-color: #fbfbfb;
     border-radius: 5px;
+}
+
+.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .tooltip {

@@ -1,6 +1,6 @@
 import AverageSession from "domain/AverageSession"
 import PropTypes from "prop-types"
-import { LineChart, XAxis, Line, Tooltip, ResponsiveContainer } from "recharts"
+import { LineChart, XAxis, Line, Tooltip } from "recharts"
 import { dayNumberToLetter } from "utils/dayUtils"
 import { useCallback, useMemo, useState } from "react"
 import styles from "./styles.module.css"
@@ -36,33 +36,33 @@ const AverageSessionChart = ({ averageSessions }) => {
                 style={{ left: chartOverlayLeft }}
             />
             <p className={styles.title}>Durée moyenne des sessions</p>
-            <ResponsiveContainer width={300} height={300}>
-                <LineChart
-                    data={data}
-                    margin={{
-                        top: 100,
-                        bottom: 20,
-                        left: 20,
-                        right: 20,
-                    }}
-                >
-                    <XAxis
-                        stroke="rgba(255, 255, 255, 0.5)"
-                        dataKey="label"
-                        axisLine={false}
-                        tickLine={false}
-                        tickMargin={10}
-                    />
-                    <Tooltip cursor={false} content={renderTooltip} />
-                    <Line
-                        type="monotone"
-                        dataKey="value"
-                        stroke="white"
-                        strokeWidth={2}
-                        dot={false}
-                    />
-                </LineChart>
-            </ResponsiveContainer>
+            <LineChart
+                data={data}
+                margin={{
+                    top: 100,
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                }}
+                width={300}
+                height={300}
+            >
+                <XAxis
+                    stroke="rgba(255, 255, 255, 0.5)"
+                    dataKey="label"
+                    axisLine={false}
+                    tickLine={false}
+                    tickMargin={10}
+                />
+                <Tooltip cursor={false} content={renderTooltip} />
+                <Line
+                    type="monotone"
+                    dataKey="value"
+                    stroke="white"
+                    strokeWidth={2}
+                    dot={false}
+                />
+            </LineChart>
         </div>
     )
 }
