@@ -1,5 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import AppIcon from "components/Icons/AppIcon"
+import BikeIcon from "components/Icons/BikeIcon"
+import FitnessIcon from "components/Icons/FitnessIcon"
+import MedidateIcon from "components/Icons/MedidateIcon"
+import SwimIcon from "components/Icons/SwimIcon"
 import PropTypes from "prop-types"
 import styles from "./styles.module.css"
 
@@ -29,6 +33,25 @@ const PageLayout = ({ children }) => {
                 </ul>
             </header>
             <main className={styles["page-layout-main"]}>{children}</main>
+            <footer className={styles["page-layout-left-bar"]}>
+                <div className={styles["page-layout-left-bar-items"]}>
+                    <div className={styles["page-layout-left-bar-item"]}>
+                        <MedidateIcon />
+                    </div>
+                    <div className={styles["page-layout-left-bar-item"]}>
+                        <SwimIcon />
+                    </div>
+                    <div className={styles["page-layout-left-bar-item"]}>
+                        <BikeIcon />
+                    </div>
+                    <div className={styles["page-layout-left-bar-item"]}>
+                        <FitnessIcon />
+                    </div>
+                </div>
+                <span className={styles["page-layout-left-bar-copyright"]}>
+                    Copiryght, SportSee 2022
+                </span>
+            </footer>
         </div>
     )
 }

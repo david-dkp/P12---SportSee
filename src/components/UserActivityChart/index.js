@@ -51,7 +51,7 @@ const UserActivityChart = ({ sessions }) => {
     }, [])
 
     return (
-        <ResponsiveContainer height={500}>
+        <ResponsiveContainer height={300}>
             <BarChart
                 margin={{
                     top: 20,
