@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import AverageSession from "domain/AverageSession"
 import Session from "domain/Session"
 import User from "domain/User"

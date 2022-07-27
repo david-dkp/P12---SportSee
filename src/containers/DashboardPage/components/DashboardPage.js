@@ -15,7 +15,6 @@ import CheeseBurgerIcon from "components/Icons/CheeseBurgerIcon"
 import { addComas } from "utils/numberUtils"
 import Session from "domain/Session"
 import UserActivityChart from "components/UserActivityChart"
-import AppIcon from "components/Icons/AppIcon"
 
 const getKeyDataProp = (key, value) => {
     switch (key) {
