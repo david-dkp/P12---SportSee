@@ -1,3 +1,6 @@
+import AverageSession from "domain/AverageSession"
+import Session from "domain/Session"
+import User from "domain/User"
 import {
     user,
     userActivity,
@@ -12,6 +15,11 @@ import {
     mapUserDtoToUser,
 } from "./mappers"
 
+/**
+ *
+ * @param {string} id - The id of the user.
+ * @returns {Promise<User>} - A promise that resolves to the user.
+ */
 const getUser = async (id) => {
     const response = await fetch(user(id))
 
@@ -23,6 +31,11 @@ const getUser = async (id) => {
     return await response.json()
 }
 
+/**
+ *
+ * @param {string} id - The id of the user.
+ * @returns {Promise<Array<Session>>} - A promise that resolves to the list of sessions of the user.
+ */
 const getUserActivity = async (id) => {
     const response = await fetch(userActivity(id))
 
@@ -36,6 +49,11 @@ const getUserActivity = async (id) => {
     return await response.json()
 }
 
+/**
+ *
+ * @param {string} id - The id of the user.
+ * @returns {Promise<Array<AverageSession>>} - A promise that resolves to the list of average sessions of the user.
+ */
 const getUserAverageSessions = async (id) => {
     const response = await fetch(userAverageSessions(id))
 
@@ -49,6 +67,11 @@ const getUserAverageSessions = async (id) => {
     return await response.json()
 }
 
+/**
+ *
+ * @param {string} id - The id of the user.
+ * @returns {Promise<Array<Performance>>} - A promise that resolves to the list of performances of the user.
+ */
 const getUserPerformance = async (id) => {
     const response = await fetch(userPerformance(id))
 

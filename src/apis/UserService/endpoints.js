@@ -1,5 +1,9 @@
 import config from "config"
 
+/**
+ * These methods are used to resolve the url of the API.
+ */
+
 export const userUrl = `${config.backendUrl}/user`
 export const user = (id) => `${userUrl}/${id}`
 export const userActivity = (id) => `${userUrl}/${id}/activity`
