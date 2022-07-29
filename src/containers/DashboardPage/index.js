@@ -1,5 +1,6 @@
-import userService from "apis/UserService"
+import realUserService from "apis/UserService"
 import { useEffect, useState } from "react"
+import fakeUserService from "apis/UserService/fakeUserService"
 import DashboardPageComponent from "./components/DashboardPage"
 
 const DashboardPage = () => {
@@ -11,6 +12,12 @@ const DashboardPage = () => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
+        const pathname = window.location.pathname
+
+        const userService = pathname.includes("/fake")
+            ? fakeUserService
+            : realUserService
+
         const getPerformancePromise = userService.getUserPerformance(userId)
         const getAverageSessionPromise =
             userService.getUserAverageSessions(userId)
