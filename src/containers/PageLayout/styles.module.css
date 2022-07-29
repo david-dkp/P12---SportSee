@@ -46,7 +46,7 @@
 }
 
 .page-layout-main {
-    overflow: scroll;
+    overflow: auto;
     padding-left: 80px;
     padding-top: 80px;
 }
