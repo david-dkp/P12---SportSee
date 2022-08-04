@@ -19,9 +19,21 @@ const KeyDataItem = ({ icon, color, title, value }) => (
 )
 
 KeyDataItem.propTypes = {
+    /**
+     * The icon that represents the data.
+     */
     icon: PropTypes.func,
+    /**
+     * The main color of the icon, also used as the background color.
+     */
     color: PropTypes.string.isRequired,
+    /**
+     * The name of the data.
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * The text displayed of the data.
+     */
     value: PropTypes.string.isRequired,
 }
 

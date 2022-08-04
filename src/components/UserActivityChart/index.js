@@ -96,6 +96,9 @@ const UserActivityChart = ({ sessions }) => {
 }
 
 UserActivityChart.propTypes = {
+    /**
+     * The sessions to display in the chart.
+     */
     sessions: PropTypes.arrayOf(PropTypes.instanceOf(Session)),
 }
 

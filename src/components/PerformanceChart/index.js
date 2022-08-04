@@ -20,6 +20,9 @@ const PerformanceChart = ({ performances }) => {
 }
 
 PerformanceChart.propTypes = {
+    /**
+     * List of performances to display in the chart
+     */
     performances: PropTypes.arrayOf(PropTypes.instanceOf(Performance)),
 }
 

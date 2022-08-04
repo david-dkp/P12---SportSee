@@ -57,6 +57,9 @@ const PageLayout = ({ children }) => {
 }
 
 PageLayout.propTypes = {
+    /**
+     * The children to render inside the page layout.
+     */
     children: PropTypes.node.isRequired,
 }
 

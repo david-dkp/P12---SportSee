@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: domain/AverageSession.js</title>
+    <title>JSDoc: Source: components/PerformanceChart/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: domain/AverageSession.js</h1>
+    <h1 class="page-title">Source: components/PerformanceChart/index.js</h1>
 
     
 
@@ -26,19 +26,35 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class AverageSession {
-    /**
-     *
-     * @param {number} day - a number representing the day of the week (1-7)
-     * @param {number} sessionLength - the length of the session in minutes
-     */
-    constructor(day, sessionLength) {
-        this.day = day
-        this.sessionLength = sessionLength
-    }
+            <pre class="prettyprint source linenums"><code>import Performance from "domain/Performance"
+import PropTypes from "prop-types"
+import { PolarAngleAxis, PolarGrid, RadarChart, Radar } from "recharts"
+import styles from "./styles.module.css"
+
+const PerformanceChart = ({ performances }) => {
+    return (
+        &lt;RadarChart
+            outerRadius={90}
+            className={styles.chart}
+            data={performances}
+            width={300}
+            height={300}
+        >
+            &lt;PolarGrid radialLines={false} />
+            &lt;PolarAngleAxis tick={{ fill: "white" }} dataKey={"kind"} />
+            &lt;Radar dataKey={"value"} fill="#e60000" opacity={"0.7"} />
+        &lt;/RadarChart>
+    )
 }
 
-export default AverageSession
+PerformanceChart.propTypes = {
+    /**
+     * List of performances to display in the chart
+     */
+    performances: PropTypes.arrayOf(PropTypes.instanceOf(Performance)),
+}
+
+export default PerformanceChart
 </code></pre>
         </article>
     </section>

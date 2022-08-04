@@ -68,6 +68,9 @@ const AverageSessionChart = ({ averageSessions }) => {
 }
 
 AverageSessionChart.propTypes = {
+    /**
+     * Array of AverageSession objects to display in the chart
+     */
     averageSessions: PropTypes.arrayOf(PropTypes.instanceOf(AverageSession)),
 }
 

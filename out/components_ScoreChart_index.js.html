@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: domain/AverageSession.js</title>
+    <title>JSDoc: Source: components/ScoreChart/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: domain/AverageSession.js</h1>
+    <h1 class="page-title">Source: components/ScoreChart/index.js</h1>
 
     
 
@@ -26,19 +26,53 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class AverageSession {
-    /**
-     *
-     * @param {number} day - a number representing the day of the week (1-7)
-     * @param {number} sessionLength - the length of the session in minutes
-     */
-    constructor(day, sessionLength) {
-        this.day = day
-        this.sessionLength = sessionLength
-    }
+            <pre class="prettyprint source linenums"><code>import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts"
+import PropTypes from "prop-types"
+import styles from "./styles.module.css"
+
+const chartMargin = { top: 30, right: 30, bottom: 30, left: 30 }
+
+const ScoreChart = ({ scorePercent }) => {
+    return (
+        &lt;div className={styles.chart}>
+            &lt;RadialBarChart
+                data={[{ name: "Score", value: scorePercent }]}
+                innerRadius="100%"
+                barSize={10}
+                startAngle={90}
+                endAngle={450}
+                width={300}
+                height={300}
+                margin={chartMargin}
+            >
+                &lt;PolarAngleAxis tick={false} type="number" domain={[0, 1]} />
+                &lt;RadialBar
+                    fill="#e60000"
+                    cornerRadius={999}
+                    dataKey={"value"}
+                />
+            &lt;/RadialBarChart>
+
+            &lt;div className={styles["label-container"]}>
+                &lt;span className={styles["label-percent-text"]}>
+                    {scorePercent * 100}%
+                &lt;/span>
+                &lt;span className={styles["label-percent-sub-text"]}>
+                    de votre objectif
+                &lt;/span>
+            &lt;/div>
+        &lt;/div>
+    )
 }
 
-export default AverageSession
+ScoreChart.propTypes = {
+    /**
+     * Score percentage that should be displayed in the chart
+     */
+    scorePercent: PropTypes.number,
+}
+
+export default ScoreChart
 </code></pre>
         </article>
     </section>

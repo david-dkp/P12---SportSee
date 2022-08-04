@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: domain/AverageSession.js</title>
+    <title>JSDoc: Source: components/KeyDataItem/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: domain/AverageSession.js</h1>
+    <h1 class="page-title">Source: components/KeyDataItem/index.js</h1>
 
     
 
@@ -26,19 +26,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class AverageSession {
+            <pre class="prettyprint source linenums"><code>import styles from "./styles.module.css"
+import PropTypes from "prop-types"
+
+const KeyDataItem = ({ icon, color, title, value }) => (
+    &lt;div className={styles.container}>
+        &lt;div className={styles["icon-container"]}>
+            &lt;div
+                style={{ backgroundColor: color }}
+                className={styles["icon-container-background"]}
+            />
+
+            {icon({ fill: color })}
+        &lt;/div>
+        &lt;div className={styles["data-container"]}>
+            &lt;div className={styles["data-value"]}>{value}&lt;/div>
+            &lt;div className={styles["data-title"]}>{title}&lt;/div>
+        &lt;/div>
+    &lt;/div>
+)
+
+KeyDataItem.propTypes = {
     /**
-     *
-     * @param {number} day - a number representing the day of the week (1-7)
-     * @param {number} sessionLength - the length of the session in minutes
+     * The icon that represents the data.
      */
-    constructor(day, sessionLength) {
-        this.day = day
-        this.sessionLength = sessionLength
-    }
+    icon: PropTypes.func,
+    /**
+     * The main color of the icon, also used as the background color.
+     */
+    color: PropTypes.string.isRequired,
+    /**
+     * The name of the data.
+     */
+    title: PropTypes.string.isRequired,
+    /**
+     * The text displayed of the data.
+     */
+    value: PropTypes.string.isRequired,
 }
 
-export default AverageSession
+export default KeyDataItem
 </code></pre>
         </article>
     </section>

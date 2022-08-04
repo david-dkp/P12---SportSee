@@ -128,11 +128,29 @@ const DashboardPage = ({
 }
 
 DashboardPage.propTypes = {
+    /**
+     * The loading state of the page.
+     */
     isLoading: PropTypes.bool,
+    /**
+     * The list of performances of the user.
+     */
     performances: PropTypes.arrayOf(PropTypes.instanceOf(Performance)),
+    /**
+     * The list of average sessions of the user.
+     */
     averageSessions: PropTypes.arrayOf(PropTypes.instanceOf(AverageSession)),
+    /**
+     * The user data.
+     */
     user: PropTypes.instanceOf(User),
+    /**
+     * The activity of the user
+     */
     userActivity: PropTypes.arrayOf(PropTypes.instanceOf(Session)),
+    /**
+     * The error message if it has one.
+     */
     error: PropTypes.string,
 }
 
