@@ -66,6 +66,7 @@ const DashboardPage = ({
     userActivity,
     user,
     isLoading,
+    error,
 }) => {
     const keyDatas = useMemo(
         () =>
@@ -75,6 +76,15 @@ const DashboardPage = ({
             }),
         [user]
     )
+
+    if (error !== null) {
+        return (
+            <div className={styles["error-message"]}>
+                An error has occured: {error}
+            </div>
+        )
+    }
+
     return (
         <div className={styles.container}>
             {isLoading ? (
@@ -123,6 +133,7 @@ DashboardPage.propTypes = {
     averageSessions: PropTypes.arrayOf(PropTypes.instanceOf(AverageSession)),
     user: PropTypes.instanceOf(User),
     userActivity: PropTypes.arrayOf(PropTypes.instanceOf(Session)),
+    error: PropTypes.string,
 }
 
 export default DashboardPage

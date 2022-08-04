@@ -10,6 +10,7 @@ const DashboardPage = () => {
     const [averageSessions, setAverageSessions] = useState([])
     const [userActivity, setUserActivity] = useState(null)
     const [user, setUser] = useState(null)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const pathname = window.location.pathname
@@ -40,7 +41,8 @@ const DashboardPage = () => {
                 }
             )
             .catch((error) => {
-                console.log(error)
+                setError(error.message)
+                setIsLoading(false)
             })
     }, [])
 
@@ -51,6 +53,7 @@ const DashboardPage = () => {
             userActivity={userActivity}
             user={user}
             isLoading={isLoading}
+            error={error}
         />
     )
 }
